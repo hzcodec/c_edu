@@ -26,5 +26,15 @@ l3: library_test2.c
 	$(CC) -shared -o libfoo.so foo.o
 	$(CC) -L. -Wl,-rpath=./ -Wall -o libtest2 library_test2.c -lfoo
 
+
+# creating a static library, run file hello
+# without using -L and -l switches
+l4: library_test3.c
+	$(CC) -Wall -c hello_fn.c
+	$(CC) -Wall -c bye_fn.c
+	ar cr libhello.a hello_fn.o bye_fn.o
+	$(CC) library_test3.c libhello.a -o hello 
+
+
 clean:
-	rm -f a.out mean_calculator1 mean_calculator2 calc_mean.o libmean.a libmean.so.1.0.1 foo.o libfoo.so libtest2
+		rm -f a.out mean_calculator1 mean_calculator2 calc_mean.o libmean.a libmean.so.1.0.1 foo.o libfoo.so libtest2 libhello.a hello hello_fn.o bye_fn.o
