@@ -3,7 +3,7 @@
     Date        : 2013-04-14
     File        : callback_test1.c
     Reference   : -
-    Description : Test of pointers to different objects.
+    Description : Test of callback functions.
 
 */
 
