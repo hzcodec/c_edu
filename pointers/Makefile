@@ -14,7 +14,7 @@ p4: ptr_test4.c
 	$(CC) ptr_test4.c -o ptr_test4
 
 p5: ptr_test5.c
-	$(CC) ptr_test5.c -o ptr_test5
+	$(CC) $(CFLAGS) ptr_test5.c -o ptr_test5
 
 p6: ptr_test6.c
 	$(CC) $(CFLAGS) -lm ptr_test6.c -o ptr_test6
