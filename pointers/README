@@ -1,0 +1,17 @@
+ptr_test1:
+    Returning pointers.
+
+ptr_test2:
+    MAP_FAILED. Type casting to a pointer of an integer.
+
+ptr_test3:
+    Pointers to struct. Passing a struct to a function.
+
+ptr_test4:
+    Pointers to struct, both without/with arrays.
+
+ptr_test5:
+    Pointer to struct, array.
+
+ptr_test6:
+    Function pointer.

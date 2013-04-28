@@ -33,7 +33,7 @@ char* getr() {
     return s;
 }
 
-// this one work better with fre// this one work better with freee
+// this one work better with free
 char* gett() {
     char* s = malloc(strlen("Get T")+1); // +1 for the null
     s = "Get T";
