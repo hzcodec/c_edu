@@ -19,5 +19,8 @@ p5: ptr_test5.c
 p6: ptr_test6.c
 	$(CC) $(CFLAGS) -lm ptr_test6.c -o ptr_test6
 
+p7: ptr_test7.c
+	$(CC) $(CFLAGS) -lm ptr_test7.c -o ptr_test7
+
 clean:
-	rm -f a.out ptr_test1 ptr_test2 ptr_test3 ptr_test4 ptr_test5 ptr_test6
+	rm -f a.out ptr_test1 ptr_test2 ptr_test3 ptr_test4 ptr_test5 ptr_test6 ptr_test7
