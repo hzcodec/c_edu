@@ -1,0 +1,45 @@
+Create a static library
+-----------------------
+
+    library_test1.c (is including calc_mean.h)
+    calc_mean.h
+    calc_mean.c
+
+    compiling -
+      1) create an object file
+          > $(CC) -c calc_mean.c -o calc_mean.o
+
+      2) create a static library
+          > ar rcs libmean.a calc_mean.o
+
+      3) Link library with main file
+          > $(CC) -static library_test1.c -L. -lmean -o mean_calculator1
+
+
+
+Create a shared library
+-----------------------
+  
+    library_test2.c (is including foo.h)
+    foo.c
+    foo.h
+
+    compiling -
+      1) create on object file (foo.o)
+          > $(CC) -c -Wall -Werror -fpic foo.c
+
+      2) create a library file (libfoo.so)
+          > $(CC) -shared -o libfoo.so foo.o
+
+      3) link files and create run file (libtest2)
+          > $(CC) -L. -Wl,-rpath=./ -Wall -o libtest2 library_test2.c -lfoo
+
+    run program -
+      > ./libtest2
+
+    
+    Tested this sequence on library_test1.c
+      > gcc -c -fpic calc_mean.c
+      > gcc -shared -o libcalc_mean.so calc_mean.o
+      > gcc -L. -Wl,-rpath=./ -o libtest1 library_test1.c -lcalc_mean
+      > ./libtest1 
