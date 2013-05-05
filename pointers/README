@@ -15,3 +15,9 @@ ptr_test5:
 
 ptr_test6:
     Function pointer.
+
+ptr_test7:
+    Pointer to different objects.
+
+ptr_test8:
+    Return multiple values via struct.
