@@ -10,5 +10,8 @@ t2: thread_test2.c
 t3: thread_test3.c
 	$(CC) $(CFLAGS) thread_test3.c -o thread_test3
 
+t4: thread_test4.c
+	$(CC) $(CFLAGS) thread_test4.c -o thread_test4
+
 clean:
-	rm -f a.out thread_test1 thread_test2 thread_test3
+	rm -f a.out thread_test1 thread_test2 thread_test3 thread_test4
