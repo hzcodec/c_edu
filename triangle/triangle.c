@@ -53,3 +53,17 @@ int main(void) {
     return 0;
 }
 
+/* Result from run:
+     x1: 10
+     y1: 30
+     x1: 99
+     y1: 77
+     Triangle is scaled up
+     x1: 20
+     y1: 60
+     Triangle is scaled up
+     x1: 495
+     y1: 385
+     x1: 44
+     y1: 22
+*/
