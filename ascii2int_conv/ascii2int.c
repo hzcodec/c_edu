@@ -56,7 +56,7 @@ int asc2int(const char* s) {
 /* *** MAIN *** */
 int main(void) {
 
-    char s[] = "+5310";
+    char s[] = "5310";
     printf("'%s' => %d\n\n",s,asc2int(s));
 
     strcpy(s,"-346");
