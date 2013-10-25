@@ -5,6 +5,9 @@
     Reference   : http://www.thegeekstuff.com/2011/12/c-socket-programming
     Description : The client is receiving the date and time. The server must
                   be up and running before the client starts.
+		  To run:
+		    1) > ./server1
+		    2) > ./client1 127.0.0.1
 */
 
 #include <sys/socket.h>
