@@ -30,4 +30,4 @@ all: client1.c
 	$(CC) server1.c -o server1 
 
 clean:
-	rm -f a.out server1 client1 server2 client2 udp_server1 udp_client1 udp_server2
+	rm -f a.out server1 client1 server2 client2 udp_server1 udp_client1 udp_server2 udp_client2

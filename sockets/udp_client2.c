@@ -2,8 +2,10 @@
     Auther      : Heinz Samuelsson
     Date        : 2013-10-25
     File        : udp_client2.c
-    Reference   : 
-    Description : 
+    Reference   : www.it.uom.gr/project/client_server/socket/socket
+    Description : UDP client.
+                  To run start client and server (udp_server2) -
+		    > ./udp_client2 127.0.0.1 99
 */
 
 #include <sys/socket.h>
@@ -11,6 +13,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <arpa/inet.h>
+#include <sys/time.h>
+#include <netdb.h>
 
 #define REMOTE_SERVER_PORT 1500
 #define MAX_MSG 100
@@ -19,12 +25,11 @@
 /* *** MAIN *** */
 int main(int argc, char *argv[]) {
 
-    int sd;
-    int rc;
-    int i;
-
+    int    sd;
+    int    rc;
+    int    i;
     struct sockaddr_in cliAddr;
-    struct sockaddr_in RemoteServAddr;
+    struct sockaddr_in remoteServAddr;
     struct hostent *h;
 
     if (argc < 3) {
@@ -41,20 +46,44 @@ int main(int argc, char *argv[]) {
     }
 
     
-    printf("%s: sending data to '%s'usage: %s \n",argv[0],h->h_name;
+    printf("%s: sending data to '%s' (IP : %s)\n",argv[0],h->h_name,inet_ntoa(*(struct in_addr *)h->h_addr_list[0]));
+
 
     remoteServAddr.sin_family = h->h_addrtype;
     memcpy((char *) &remoteServAddr.sin_addr.s_addr,h->h_addr_list[0],h->h_length);
     remoteServAddr.sin_port = htons(REMOTE_SERVER_PORT);
     
     /* socket creation */
-    sd = socket(AF_INET,SOCK_DGRAM),0);
+    sd = socket(AF_INET,SOCK_DGRAM,0);
 
+    if (sd < 0) {
+        printf("%s: cannot open socket\n",argv[0]);
+	exit(1);
+    }
+
+    /* bind any port */
+    cliAddr.sin_family      = AF_INET;
+    cliAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    cliAddr.sin_port        = htons(0);
+
+    rc = bind(sd, (struct sockaddr *) &cliAddr, sizeof(cliAddr));
+
+    if (rc < 0) {
+        printf("%s: cannot bind port\n",argv[0]);
+	exit(1);
+    }
+
+    /* send data */
+    for (i=2; i<argc; i++) {
+        rc = sendto(sd, argv[i],strlen(argv[i])+1,0,(struct sockaddr*)&remoteServAddr,sizeof(remoteServAddr));
+    }
+
+    if (rc < 0) {
+        printf("%s: cannot send data %d\n",argv[0],i-1);
+	close(sd);
+	exit(1);
+    }
 
     return 0;
 }
-
-/*
-  Result from run:
-*/
 

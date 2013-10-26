@@ -2,8 +2,8 @@
     Auther      : Heinz Samuelsson
     Date        : 2013-10-25
     File        : udp_server2.c
-    Reference   : 
-    Description :
+    Reference   : www.it.uom.gr/project/client_server/socket/socket
+    Description : UDP server.
 */
 
 #include <sys/socket.h>
