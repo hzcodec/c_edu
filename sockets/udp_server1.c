@@ -1,9 +1,9 @@
 /* 
     Auther      : Heinz Samuelsson
     Date        : 2013-10-25
-    File        : server1.c
+    File        : udp_server1.c
     Reference   : 
-    Description : The program is receiving data/string from client.
+    Description : The program is receiving data/string from client. Use udp_client1.c.
 */
 
 #include <sys/socket.h>

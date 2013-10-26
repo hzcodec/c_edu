@@ -1,10 +1,13 @@
 /* 
     Auther      : Heinz Samuelsson
     Date        : 2013-10-25
-    File        : client2.c
-    Reference   : See server2.c
+    File        : udp_client1.c
+    Reference   : See server1.c
     Description : Client program. Start program and enter text.
-                  > ./udp_client 127.0.0.1
+                  To communicate locally (localhost) -
+                      > ./udp_client 127.0.0.1
+		  or with another computer in the network -
+                      > ./udp_client 192.168.1.69
 */
 
 #include <sys/socket.h>
