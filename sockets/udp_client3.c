@@ -86,6 +86,9 @@ int main(int argc, char *argv[]) {
     cliAddr.sin_addr.s_addr = htonl(INADDR_ANY);
     cliAddr.sin_port        = htons(0);
 
+    //        file descriptor
+    //             pointer to sockaddr structure
+    //                                             length
     rc = bind(sd, (struct sockaddr *) &cliAddr, sizeof(cliAddr));
 
     if (rc < 0) {
