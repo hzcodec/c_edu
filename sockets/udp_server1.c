@@ -4,6 +4,7 @@
     File        : udp_server1.c
     Reference   : 
     Description : The program is receiving data/string from client. Use udp_client1.c.
+                  The server is returning the received string.
 */
 
 #include <sys/socket.h>
