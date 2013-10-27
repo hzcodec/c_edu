@@ -25,11 +25,17 @@ us2: udp_server2.c
 uc2: udp_client2.c
 	$(CC) udp_client2.c -o udp_client2
 
+
 us3: udp_server3.c
 	$(CC) udp_server3.c -o udp_server3
 
 uc3: udp_client3.c
 	$(CC) udp_client3.c -o udp_client3
+
+u3: udp_client3.c
+	$(CC) udp_client3.c -o udp_client3
+	$(CC) udp_server3.c -o udp_server3
+
 
 all: client1.c
 	$(CC) client1.c -o client1 

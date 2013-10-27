@@ -13,7 +13,6 @@
 #include <string.h>
 
 #define LOCAL_SERVER_PORT 1500
-#define MAX_MSG 100
 
 
 typedef struct {
