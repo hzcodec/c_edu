@@ -25,5 +25,8 @@ p7: ptr_test7.c
 p8: ptr_test8.c
 	$(CC) ptr_test8.c -o ptr_test8
 
+p9: pp_test1.c
+	$(CC) pp_test1.c -o pp_test1
+
 clean:
-	rm -f a.out ptr_test1 ptr_test2 ptr_test3 ptr_test4 ptr_test5 ptr_test6 ptr_test7 ptr_test8
+	rm -f a.out ptr_test1 ptr_test2 ptr_test3 ptr_test4 ptr_test5 ptr_test6 ptr_test7 ptr_test8 pp_test1
