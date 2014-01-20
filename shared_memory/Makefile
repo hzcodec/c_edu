@@ -1,0 +1,11 @@
+CC     = gcc
+CFLAGS = -std=c99 -pedantic -Werror -Wall
+
+s1: shm_server.c
+	$(CC) shm_server.c -o shm_server
+
+c1: shm_client.c
+	$(CC) shm_client.c -o shm_client
+
+clean:
+	rm -f a.out shm_server shm_client
