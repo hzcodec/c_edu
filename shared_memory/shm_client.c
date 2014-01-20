@@ -2,8 +2,14 @@
     Auther      : Heinz Samuelsson
     Date        : 2014-01-19
     File        : shm_client.c
-    Reference   : -
-    Description : Shared memory client.
+    Reference   : www.cs.cf.ac.uk/Dave/C/node27.html
+    Description : Shared memory client. Compiling with its original code gave a warning.
+                    gcc shm_client.c -o shm_client
+                    shm_client.c: In function ‘main’:
+                    shm_client.c:44:22: warning: comparison between pointer and integer [enabled by default]
+                  To get around the warning use '\0' at row 51.
+                  
+                  
 */
 
 #include <sys/types.h>
@@ -41,7 +47,8 @@ int main(int argc, char *argv[]) {
      }
 
      /* now read what the server put in the memory */
-     for (s = shm; *s!=NULL; s++) {
+     //for (s = shm; *s!=NULL; s++) {
+     for (s = shm; *s!='\0'; s++) {
          putchar(*s);
      }
 

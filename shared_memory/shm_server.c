@@ -45,7 +45,8 @@ int main(int argc, char *argv[]) {
     for (c = 'a'; c<='z'; c++) {
         *s++;
     }
-    *s = NULL;
+    //*s = NULL;
+    *s = '\0';
 
     /* finnaly, wait until the other process changes the first
        character of out memory to '*', indicating that is has
