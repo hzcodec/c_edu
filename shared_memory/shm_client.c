@@ -7,9 +7,20 @@
                     gcc shm_client.c -o shm_client
                     shm_client.c: In function ‘main’:
                     shm_client.c:44:22: warning: comparison between pointer and integer [enabled by default]
+
                   To get around the warning use '\0' at row 51.
-                  
-                  
+
+                  To check shared memory from a console.
+                    > ipcs 
+                 
+                  The script below will destroy all of your shared memory segments_4
+                      #!/bin/csh -f
+                      set l = 'ipcs -m | grep "$USER" | cut -c12-19'
+                      foreach s ($1)
+                        echo $s
+                        ipcrm shm $s
+                      end
+                      if ($#1 !=0) echo $#1 shared memory\s(s\) for $user removed
 */
 
 #include <sys/types.h>
