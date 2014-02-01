@@ -17,6 +17,10 @@ n1: named_pipe.c
 all: pipe_read.c
 	$(CC) pipe_read.c -o pipe_read 
 	$(CC) pipe_write.c -o pipe_write 
+	$(CC) pipe_write2.c -o pipe_write2
+	$(CC) pipe_read2.c -o pipe_read2
+	$(CC) unnamed_pipe.c -o unnamed_pipe
+	$(CC) -lpthread named_pipe.c -o named_pipe
 
 clean:
 	rm -f a.out $(FILES)
