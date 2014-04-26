@@ -39,7 +39,6 @@ int main(void) {
         printf("Threads fail!\n");
     }
     
-
     pthread_exit(&thread1);
     pthread_exit(&thread2);
     pthread_exit(&thread3);

@@ -3,7 +3,8 @@
     Date        : 2013-06-01
     File        : thread_test4.c
     Reference   : -
-    Description : Test of threads.
+    Description : Programming is running for ever. Use 'ps -x' to find
+                  process number and then kill the process.
 */
 
 #include <stdio.h>    // standard I/O routines
