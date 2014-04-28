@@ -9,6 +9,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#define ADD 0
+#define SUB 1
+#define MUL 2
+#define DIV 3
+
 typedef struct{
     float a;
     float b;
@@ -56,7 +61,7 @@ int main(void) {
     afp[2] = Mul;
     afp[3] = Div;
 
-    float r = (*afp[0])(par);
+    float r = (*afp[ADD])(par);
     printf("r: = %f\n",r);
 
     // new parameters
@@ -64,7 +69,7 @@ int main(void) {
     par.b = 77;
     strcpy(par.message,"Test2");
 
-    r = (*afp[1])(par);
+    r = (*afp[SUB])(par);
     printf("r: = %f\n",r);
 
     return 0;
