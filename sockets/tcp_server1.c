@@ -39,10 +39,10 @@ int main(int argc , char *argv[]) {
          
     // Bind socket using wildcards
     server.sin_family = AF_INET;
-    server.sin_addr.s_addr =INADDR_ANY;
-    server.sin_port = 0;
+    server.sin_addr.s_addr = INADDR_ANY;
+    server.sin_port = htons(33000);
  
-    if (bind(sock, (struct sockaddr*)&server,sizeof server) == -1) {
+    if (bind(sock, (struct sockaddr*)&server, sizeof server) == -1) {
         perror("bindingstream socket");
         exit(1);
     }
