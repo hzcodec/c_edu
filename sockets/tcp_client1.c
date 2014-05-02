@@ -9,7 +9,7 @@
 		  Some data are sent over the connection and then the
 		  socket is closed, ending the connection.
                   The form of the command line is:
-                      > ./client 127.0.0.1 42695
+                      > ./client1 127.0.0.1 33000
 */
 #include <stdio.h>
 #include <stdlib.h>      // exit()
