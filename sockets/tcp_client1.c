@@ -31,6 +31,11 @@
                       listen(int sockfd, int backlog)
 		  Accept new connection request from a client.
 		      accept(int sockfd, struct sockaddr addr*, socklen_t *addrlen) 
+
+		  You can use read() and write() but send() and recv() offer much more
+		  control over your transmission.
+
+                  SOCK_STREAM - reliable delivery (TCP). Connection oriented.
 */
 
 #include <stdio.h>
