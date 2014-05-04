@@ -8,9 +8,31 @@
 		  connection with the socket given in the command line.
 		  Some data are sent over the connection and then the
 		  socket is closed, ending the connection.
-                  The form of the command line is:
-                      > ./client1 127.0.0.1 33000
+                  The form of the command line is: tcp_client1 <ip_address> <port_number>
+                      > ./tcp_client1 127.0.0.1 33000
+
+
+	+------------------+                +-------------------+
+	|                  |   DATA         |                   |
+	|   tcp_client1    |--------------->|    tcp_server1    |
+	|                  |                |                   |
+	|   socket(...)    |                |    socket(...)    |
+	|   connect()      |                |    bind()         |
+	|   write()        |                |    listen()       |
+	|                  |                |    accept()       |
+	|                  |                |    read()         |
+	|                  |                |                   |
+	+------------------+                +-------------------+
+
+
+	          Associate a socket with a port on your local machine.
+	              bind(int sockfd, struct sockaddr *my_addr, int addrlen)
+		  Connect to a remote host - then use accept() then use accept()
+                      listen(int sockfd, int backlog)
+		  Accept new connection request from a client.
+		      accept(int sockfd, struct sockaddr addr*, socklen_t *addrlen) 
 */
+
 #include <stdio.h>
 #include <stdlib.h>      // exit()
 #include <string.h>      // strlen
@@ -39,7 +61,7 @@ int main(int argc , char *argv[]) {
     // connect socket using name specified by command line
     server.sin_family = AF_INET;
     hp = gethostbyname(argv[1]);
-    printf("hp %s\n",hp->h_name);
+    printf("hp name: %s\n",hp->h_name);
  
     // gethostbyname() returns a structure including the network
     // address of the specified host
@@ -47,12 +69,12 @@ int main(int argc , char *argv[]) {
         fprintf(stderr,"%s: unknown host\n",argv[1]);
         exit(2);
     }
-     
+
     memcpy((char*)&server.sin_addr, (char*)hp->h_addr, hp->h_length);
     server.sin_port = htons(atoi(argv[2]));
 
     if (connect(sock,(struct sockaddr*)&server, sizeof server)== -1) {
-        perror("Connecting stream socket");
+        perror("Connecting to stream socket");
         exit(1);
     }
 

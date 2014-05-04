@@ -29,6 +29,7 @@ int main(int argc , char *argv[]) {
     int    msgsock;
     char   buf[1024];
     int    rval;
+    char   hostname[128];
  
     //Create socket
     sock = socket(AF_INET , SOCK_STREAM , 0);
@@ -42,6 +43,7 @@ int main(int argc , char *argv[]) {
     server.sin_addr.s_addr = INADDR_ANY;
     server.sin_port = htons(33000);
  
+    // bind socket to a port
     if (bind(sock, (struct sockaddr*)&server, sizeof server) == -1) {
         perror("bindingstream socket");
         exit(1);
@@ -55,7 +57,12 @@ int main(int argc , char *argv[]) {
     }
 
     // network host to short
-    printf("Socket port #%d\n",ntohs(server.sin_port));
+    printf("Socket port:    #%d\n",ntohs(server.sin_port));
+
+    // get host name
+    gethostname(hostname, sizeof(hostname));
+    printf("My hostname is: %s\n",hostname);
+
 
     // Start accepting connections
     listen(sock,5);
@@ -74,7 +81,7 @@ int main(int argc , char *argv[]) {
             if (rval == 0)
                 printf("Ending connection\n");
             else
-                printf("-->%s\n", buf);
+                printf("Server received --> %s\n", buf);
 
          } while (rval != 0);
 
