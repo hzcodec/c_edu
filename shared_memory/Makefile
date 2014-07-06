@@ -1,5 +1,6 @@
 CC     = gcc
 CFLAGS = -std=c99 -pedantic -Werror -Wall
+FILES  = regmap
 
 s1: shm_server.c
 	$(CC) shm_server.c -o shm_server
@@ -19,5 +20,8 @@ b1: serv2.c
 b2: client2.c
 	$(CC) client2.c -o client2
 
+r1: regmap.c
+	$(CC) regmap.c -o regmap
+
 clean:
-	rm -f a.out shm_server shm_client shared1 shared2 serv2 client2
+	rm -f a.out shm_server shm_client shared1 shared2 serv2 client2 $(FILES)
