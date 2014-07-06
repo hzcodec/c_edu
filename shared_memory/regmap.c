@@ -1,3 +1,10 @@
+/* 
+    Auther      : Heinz Samuelsson
+    Date        : 2014-07-06
+    File        : regmap.c
+    Reference   : -
+    Description : regmap is allocating a memory area.
+*/
 
 #include <stdio.h>      // puts()
 #include <fcntl.h>      // open()
