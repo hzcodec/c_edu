@@ -2,7 +2,7 @@ CC     = gcc
 #CFLAGS = -std=c99 -pedantic -Werror -Wall -lpthread
 CFLAGS = -std=c99 -Wall -lpthread
 FILES1 = thread_test1 thread_test2 thread_test3 thread_test4
-FILES2 = thread1 thread2 thread_test5
+FILES2 = thread_server1 thread_client1ILES2 = thread1 thread2 thread_test5 thread_server1 thread_client1
 
 t1: thread_test1.c
 	$(CC) $(CFLAGS) thread_test1.c -o thread_test1
@@ -24,6 +24,10 @@ s1: thread1.c
 
 s2: thread2.c
 	$(CC) $(CFLAGS) thread2.c -o thread2
+
+q1: thread_server1.c
+	$(CC) thread_server1.c -o thread_server1
+	$(CC) -pthread thread_client1.c -o thread_client1
 
 all: thread1.c
 	$(CC) $(CFLAGS) thread_test1.c -o thread_test1
