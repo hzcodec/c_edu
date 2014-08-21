@@ -2,7 +2,7 @@ CC     = gcc
 CFLAGS = -std=c99 -pedantic -Werror -Wall
 FILES1 = ptr_test1 ptr_test2 ptr_test3 ptr_test4 ptr_test5
 FILES2 = ptr_test6 ptr_test7 ptr_test8 pp_test1 func_ptr1
-FILES3 = function_ptr1 function_ptr2 function_ptr3 function_ptr4
+FILES3 = function_ptr1 function_ptr2 function_ptr3 function_ptr4 message_ptr1
 
 p1: ptr_test1.c
 	$(CC) $(CFLAGS) ptr_test1.c -o ptr_test1
@@ -45,6 +45,9 @@ q3: function_ptr3.c
 
 q4: function_ptr4.c
 	$(CC) $(CFLAGS) function_ptr4.c -o function_ptr4
+
+f2: message_ptr1.c
+	$(CC) $(CFLAGS) message_ptr1.c -o message_ptr1
 
 clean:
 	rm -f a.out $(FILES1) $(FILES2) $(FILES3)
