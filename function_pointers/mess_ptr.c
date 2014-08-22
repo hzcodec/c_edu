@@ -25,20 +25,20 @@ float Add (Parameters p) {
 }
 
 float Sub (Parameters p) {
-    float rv = internal_sub(p);
     printf ("Sub Message: %s\n",p.message);
+    float rv = internal_sub(p);
     return rv;
 }
 
 float Mul (Parameters p) {
-    float rv = internal_mul(p);
     printf ("Mul Message: %s\n",p.message);
+    float rv = internal_mul(p);
     return rv;
 }
 
 float Div (Parameters p) {
-    float rv = internal_div(p);
     printf ("Div Message: %s\n",p.message);
+    float rv = internal_div(p);
     return rv;
 }
 
