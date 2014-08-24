@@ -80,6 +80,8 @@ DataMessage rec_message(int fd) {
    int n;
 
       len = sizeof(cliaddr);
+      printf("\nWaiting for message to be received from client ...\n");
+
       // receive message from client
       n = recvfrom(fd,&new_msg,sizeof(new_msg),0,(struct sockaddr *)&cliaddr,&len);
       if (n < 0) {
