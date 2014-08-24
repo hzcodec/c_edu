@@ -156,6 +156,7 @@ int main(int argc, char* argv[]) {
     par.indata2 = rec_msg.b;
     strcpy(par.comment,"Test1");
     printf("r1 = %f\n",(*func[function_idx].xfp)(par));
+    printf("Spare info: %d\n",func[function_idx].z);
     printf("------------------------------------\n");
 
     return 0;
