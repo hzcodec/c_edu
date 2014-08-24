@@ -13,9 +13,9 @@ typedef struct {
 
 // container for the functions
 typedef struct {
-    float (*xfp)(Parameters p);
-    char*  xfpstr;
-    int   z;
+    float (*xfp)(Parameters p); // function pointer with parameter
+    char*  xfpstr;              // string, same as name of function ptr 
+    int   z;                    // spare information
 }Container;
 
 
