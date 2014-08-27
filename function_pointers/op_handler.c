@@ -10,9 +10,30 @@
 
                   A server is implemented to handle the incomming message.
 
-                  Ex of how to run the program:
+                  How to run the program:
                     > ./op_handler 
                     > ./op_client <operation> <value1> <value2>
+
+                  Ex:
+                    > ./op_handler 
+                    > ./op_client add 5 6
+
+                  Result:
+                    Waiting for message to be received from client ...
+                    ------------------------------------
+                    Received the following from client:
+                    add:  5 - 6
+                    ------------------------------------
+                    Operation: add
+                    Data 1:    5
+                    Data 2:    6
+                    ------------------------------------
+                    Called function: add - with index: 0
+                    Add Message: Test1
+                    Internal add from operations
+                    r1 = 11.000000
+                    Spare info (func[]): 22
+                    ------------------------------------
 */
 
 #include <stdio.h>
@@ -27,26 +48,27 @@
 int socket_fd;
 
 
-// The two arithmetic operations ... one of these functions is selected at runtime
-float Add (Parameters p) {
+// The arithmetic operations ... one of these functions is selected at runtime
+// These functions are called via function pointer (*func[function_idx].xfp)(par)
+float Add(Parameters p) {
     printf ("Add Message: %s\n",p.comment);
     float rv = internal_add(p);
     return rv;
 }
 
-float Sub (Parameters p) {
+float Sub(Parameters p) {
     printf ("Sub Message: %s\n",p.comment);
     float rv = internal_sub(p);
     return rv;
 }
 
-float Mul (Parameters p) {
+float Mul(Parameters p) {
     printf ("Mul Message: %s\n",p.comment);
     float rv = internal_mul(p);
     return rv;
 }
 
-float Div (Parameters p) {
+float Div(Parameters p) {
     printf ("Div Message: %s\n",p.comment);
     float rv = internal_div(p);
     return rv;
@@ -60,7 +82,6 @@ int create_socket() {
 
    int sockfd = socket(AF_INET,SOCK_DGRAM,0);
 
-   //bzero(&servaddr,sizeof(servaddr));
    memset(&servaddr,sizeof(servaddr),0);
    servaddr.sin_family = AF_INET;
    servaddr.sin_addr.s_addr=htonl(INADDR_ANY);
@@ -106,12 +127,12 @@ DataMessage rec_message(int fd) {
 /* *** MAIN *** */
 int main(int argc, char* argv[]) {
 
-    Parameters par;     // in parameters to the operation
+    Parameters  par;      // in parameters to the operation
     DataMessage rec_msg;  // received message from client
 
     // create socket and get message from client
     socket_fd = create_socket();
-    rec_msg = rec_message(socket_fd);
+    rec_msg   = rec_message(socket_fd);
     
     // print out received message
     printf("Operation: %s\n",rec_msg.operation);
@@ -158,7 +179,7 @@ int main(int argc, char* argv[]) {
     par.indata2 = rec_msg.b;
     strcpy(par.comment,"Test1");
     printf("r1 = %f\n",(*func[function_idx].xfp)(par));
-    printf("Spare info: %d\n",func[function_idx].z);
+    printf("Spare info (func[]): %d\n",func[function_idx].z);
     printf("------------------------------------\n");
 
     return 0;

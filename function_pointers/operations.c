@@ -11,21 +11,21 @@
 #include "op_handler.h"
 
 float internal_add(Parameters p) {
-    printf("Internal add\n");
+    printf("Internal add from operations\n");
     return p.indata1+p.indata2;
 }
 
 float internal_sub(Parameters p) {
-    printf("Internal sub\n");
+    printf("Internal sub from operations\n");
     return p.indata1-p.indata2;
 }
 
 float internal_mul(Parameters p) {
-    printf("Internal mul\n");
+    printf("Internal mul from operations\n");
     return p.indata1*p.indata2;
 }
 
 float internal_div(Parameters p) {
-    printf("Internal div\n");
+    printf("Internal div from operations\n");
     return p.indata1/p.indata2;
 }
