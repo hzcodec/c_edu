@@ -15,9 +15,6 @@
                    struct in_addr {
                        unsigned long s_addr;  // load with inet_aton()
                    };
-};
-
- 
 */
 
 #include <arpa/inet.h>
