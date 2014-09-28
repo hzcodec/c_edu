@@ -43,3 +43,60 @@ Create a shared library
       > gcc -shared -o libcalc_mean.so calc_mean.o
       > gcc -L. -Wl,-rpath=./ -o libtest1 library_test1.c -lcalc_mean
       > ./libtest1 
+
+=======================================================================================
+
+How to compile and link source code and header files located in different directories.
+
+                           |
+                       /library
+                           |
+                  ------------------------
+                    |         |        |
+                  /src    /include    /bin
+
+
+Create a static library
+
+  > gcc -c src/plot.c -o plot.o       => plot.o
+  > ar rcs libplot.a plot.o           => libplot.a
+  > gcc -c src/status.c -o status.o   => plot.o
+  > ar rcs libplot.a plot.o           => libplot.a
+
+  //                        your soname      library_name
+  > gcc -shared -Wl,-soname,libplot.so.1 -o libplot.so.1.0.1 plot.o  => libplot.so.1.0.1
+
+Link static lib
+  > gcc -static src/wrapper.c -I./include -L. -lplot -o stat_wrapper
+
+
+Create a shared library
+  > gcc -c -fPIC src/plot.c -o plot.o  => plot.o
+
+
+It's possible to set CPATH to define the include path.
+  > export CPATH=$CPATH:include
+  > gcc src/wrapper.c src/plot.c
+
+---
+
+To put binaries in a /bin directory.
+
+  > gcc -c src/plot.c -o bin/plot.o
+  > ar rcs bin/libplot.a bin/plot.o
+  > gcc -c src/status.c -o bin/status.o
+  > ar rcs bin/libstatus.a bin/status.o
+
+  Only 'plot' is linked.
+  > gcc -shared -Wl,-soname,libplot.so.1 -o bin/libplot.so.1.0.1 bin/plot.o
+  > gcc -static src/wrapper.c -I./include -L./bin -lplot -o bin/stat_wrapper
+
+  'status' is also linked.
+  > gcc -shared -Wl,-soname,libstatus.so.1 -o bin/libstatus.so.1.0.1 bin/status.o
+  > gcc -static src/wrapper.c -I./include -L./bin -lplot -lstatus -o bin/stat_wrapper
+
+---
+
+http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+
+http://eli.thegreenplace.net/2013/07/09/library-order-in-static-linking/
