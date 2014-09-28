@@ -97,6 +97,11 @@ To put binaries in a /bin directory.
 
 ---
 
+ How to dissamble an object code.
+
+   > objdump -Dslx <file>
+
+References:
 http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
 
 http://eli.thegreenplace.net/2013/07/09/library-order-in-static-linking/
