@@ -4,7 +4,7 @@ FILES1 = a.out server1 client1 server2 client2 udp_server1 udp_client1 udp_serve
 FILES2 = udp_client2 udp_server3 udp_client3 socket_client1 socket_server1
 FILES2 = server_tcp client_tcp socket_client1 socket_server1
 FILES3 = tcp_client1 tcp_server1 tcp_client2 tcp_server2 udp_client3 udp_server3 server_udp_packets client_udp_packets
-FILES4 = udp_client_with_sendto udp_server_with_sendto
+FILES4 = udp_client_with_sendto udp_server_with_sendto udp_client_with_sendto2 udp_server_with_sendto2
 
 s1: server1.c
 	$(CC) server1.c -o server1
@@ -65,6 +65,10 @@ m1: udp_client_with_sendto.c
 	$(CC) udp_client_with_sendto.c -o udp_client_with_sendto
 	$(CC) $(CFLAGS) udp_server_with_sendto.c -o udp_server_with_sendto
 
+m2: udp_client_with_sendto2.c
+	$(CC) udp_client_with_sendto2.c -o udp_client_with_sendto2
+	$(CC) $(CFLAGS) udp_server_with_sendto2.c -o udp_server_with_sendto2
+
 
 all: client1.c
 	$(CC) client1.c -o client1 
@@ -75,4 +79,4 @@ all: client1.c
 	$(CC) client_tcp.c -o client_tcp
 
 clean:
-	rm -f $(FILES1) $(FILES2) $(FILES3)
+	rm -f $(FILES1) $(FILES2) $(FILES3) $(FILES4)
