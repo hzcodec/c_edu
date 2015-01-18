@@ -1,0 +1,48 @@
+When to use header files?
+The  #include "plot.h" does'nt seem to make a difference.
+
+I have a structure as below:
+
+├── build
+│   ├── file1.o
+│   └── plot.o
+├── include
+│   └── plot.h
+├── pgm1
+└── src
+    ├── file1.c
+    └── plot.c
+
+file1.c
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include "plot.h"
+  
+  int main(void) {
+  
+      plotXY(3,4);
+  
+      return 0;
+  }
+
+
+plot.c
+  #include <stdio.h>
+  #include <stdlib.h>
+  
+  void plotXY(int x,int y) {
+  
+      printf("Res: %d\n",x*y);
+  }
+
+
+plot.h
+  void plotXY(int x,int y);
+
+
+I'm using the following to compile:
+  gcc src/plot.c -o build/plot.o -c
+  gcc src/file1.c -o build/file1.o -c -I ./include
+  gcc -o pgm1 build/file1.o build/plot.o
+
+

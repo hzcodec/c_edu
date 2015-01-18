@@ -1,0 +1,19 @@
+gcc src/plot.c -o build/plot.o -c
+gcc src/file1.c -W -Wall -o build/file1.o -c -I ./include
+
+gcc -o pgm1 build/file1.o build/plot.o
+
+
+---
+Create a static library
+
+Generate the object files with gcc, then use ar to bundle them into a static library.
+
+gcc -c -o plotstat.o src/plot.c
+ar rcs libplotstat.a plotstat.o
+gcc src/file1.c libplotstat.a -I ./include -o pgmlib
+gcc src/file1.c -static libplotstat.a -I ./include -o pgmlib
+
+gcc -o testprog src/plot.c -static -llibplotstat.a
+
+
