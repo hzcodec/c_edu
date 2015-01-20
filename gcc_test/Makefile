@@ -21,9 +21,6 @@ t4: src/file1.c
 
 # create a static library
 all: t5 t6 
-	$(CC) $(CFLAGS) -c -o build/staticplot.o src/plot.c
-	ar rcs build/libstaticplot.a build/staticplot.o
-	$(CC) $(CFLAGS) $(INCLUDES) src/file1.c -static build/libstaticplot.a -o pgm2
 
 t5: src/plot.c
 	$(CC) $(CFLAGS) -c -o build/staticplot.o src/plot.c
