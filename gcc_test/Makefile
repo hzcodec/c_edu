@@ -1,5 +1,8 @@
-CC = gcc
-CFLAGS = -std=c99 -W -Wall
+CC       = gcc
+CFLAGS   = -std=c99 -W -Wall
+INCLUDES = -I ./include
+SRCS     = src/file1.c src/plot.c
+HDRS     = include/plot.h
 
 t1: src/file1.c
 	$(CC) $(CFLAGS) src/plot.c -o build/plot.o -c -I ./include
@@ -21,9 +24,14 @@ t5: src/plot.c
 	ar rcs build/libstaticplot.a build/staticplot.o
 
 t6: src/file1.c
-	$(CC) $(CFLAGS) src/file1.c -static build/libstaticplot.a -I ./include -o pgm2
+	#$(CC) $(CFLAGS) src/file1.c -static build/libstaticplot.a -I ./include -o pgm2
+	$(CC) $(CFLAGS) $(INCLUDES) src/file1.c -static build/libstaticplot.a -o pgm2
 
+
+tar:
+	#tar cfv jennie.tar src/file1.c src/plot.c include/plot.h
+	tar cfv jennie.tar $(SRCS) $(HDRS)
 
 # clean all directories
 clean:
-	rm -f build/*.o build/libstaticplot.a staticplot.o pgm1 pgm2
+	rm -f build/*.o build/libstaticplot.a staticplot.o pgm1 pgm2 jennie.tar

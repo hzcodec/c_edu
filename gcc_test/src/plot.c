@@ -4,5 +4,5 @@
 char plotXY(int x,int y) {
 
     printf("Res: %d\n",x*y);
-    return 'A';
+    return 'B';
 }
