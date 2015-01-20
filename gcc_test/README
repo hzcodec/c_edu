@@ -1,19 +1,22 @@
-gcc src/plot.c -o build/plot.o -c
-gcc src/file1.c -W -Wall -o build/file1.o -c -I ./include
+Compile source files
+  gcc src/plot.c -o build/plot.o -c
+  gcc src/file1.c -W -Wall -o build/file1.o -c -I ./include
 
-gcc -o pgm1 build/file1.o build/plot.o
-
+  gcc -o pgm1 build/file1.o build/plot.o
 
 ---
-Create a static library
-
+Create a static library. A static library is created with the archiver (ar).
 Generate the object files with gcc, then use ar to bundle them into a static library.
+-c = create an intermediary object file (not executable).
 
-gcc -c -o plotstat.o src/plot.c
-ar rcs libplotstat.a plotstat.o
-gcc src/file1.c libplotstat.a -I ./include -o pgmlib
-gcc src/file1.c -static libplotstat.a -I ./include -o pgmlib
+  gcc -c -o build/staticplot.o src/plot.c
+  ar rcs build/libstaticplot.a build/staticplot.o
 
-gcc -o testprog src/plot.c -static -llibplotstat.a
 
+Linking against a static library
+  gcc src/file1.c -static build/libstaticplot.a -I ./include -o pgm2
+  gcc src/file1.c -static -L./build -lstaticplot -I ./include -o pgm2
+
+without -static (OK, if no .so file exists)
+  gcc src/file1.c -L./build -lstaticplot -o pgm2
 

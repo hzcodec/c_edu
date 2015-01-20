@@ -15,12 +15,15 @@ t3: src/file1.c
 t4: src/file1.c
 	$(CC) $(CFLAGS) -o pgm1 build/file1.o build/plot.o
 
+# create a static library
 t5: src/plot.c
-	$(CC) $(CFLAGS) -c -o build/staticplot.o src/plot.c 
+	$(CC) $(CFLAGS) -c -o build/staticplot.o src/plot.c
 	ar rcs build/libstaticplot.a build/staticplot.o
 
 t6: src/file1.c
 	$(CC) $(CFLAGS) src/file1.c -static build/libstaticplot.a -I ./include -o pgm2
 
+
+# clean all directories
 clean:
-	rm -f build/*.o build/libstaticplot.a staticplot.o pgm1 pgm2 
+	rm -f build/*.o build/libstaticplot.a staticplot.o pgm1 pgm2
