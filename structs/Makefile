@@ -13,5 +13,8 @@ i1: init_struct.c
 i2: init_struct2.c
 	$(CC) $(CFLAGS) init_struct2.c -o init_struct2
 
+s3: struct_obj.c
+	$(CC) $(CFLAGS) struct_obj.c -o struct_obj
+
 clean:
-	rm -f a.out struct_test1 struct_test2 init_struct init_struct2
+	rm -f a.out struct_test1 struct_test2 init_struct init_struct2 struct_obj
