@@ -24,7 +24,6 @@
 int main(void) {
 
     unsigned int byte;
-    unsigned int nisse;
 
     BIT_SET(byte, 3);
     printf("byte %02x\n", byte);
@@ -60,6 +59,12 @@ int main(void) {
 
 /*
   Result from run:
+
+    byte 08
+    byte 00
+    byte 08
+    Bit set
+    Bit not set
 
 */
 
