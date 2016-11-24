@@ -26,26 +26,40 @@ int main(void) {
     unsigned int byte;
     unsigned int nisse;
 
-    BIT_SET(byte,3);
-    printf("byte %02x\n",byte);
+    BIT_SET(byte, 3);
+    printf("byte %02x\n", byte);
 
-    BIT_CLEAR(byte,3);
-    printf("byte %02x\n",byte);
+    BIT_CLEAR(byte, 3);
+    printf("byte %02x\n", byte);
 
-    BIT_FLIP(byte,3);
-    printf("byte %02x\n",byte);
+    BIT_FLIP(byte, 3);
+    printf("byte %02x\n", byte);
 
-    BIT_CHECK(byte,3);
-    printf("byte %02x\n",byte);
+    if(BIT_CHECK(byte, 3))
+    {
+        printf("Bit set\n");
+    }
+    else
+    {
+        printf("Bit not set\n");
+    }
+
+    BIT_CLEAR(byte, 3);
+    if(BIT_CHECK(byte, 3))
+    {
+        printf("Bit set\n");
+    }
+    else
+    {
+        printf("Bit not set\n");
+    }
+
 
     return 0;
 }
 
 /*
   Result from run:
-    byte 08
-    byte 00
-    byte 08
-    byte 08
+
 */
 
