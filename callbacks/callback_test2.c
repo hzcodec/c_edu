@@ -24,8 +24,19 @@ void _set_callback(MyCallback callback) {
     else {
         printf("Only one function callback is allowed!\n");
     }
+}
 
+void irq()
+{
     my_callback(2,5);
 }
 
 
+
+void add(int a,int b) {
+    printf("a+b=%d\n",a+b);
+}
+
+void sub(int a,int b) {
+    printf("a-b=%d\n",a-b);
+}

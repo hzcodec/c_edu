@@ -9,4 +9,6 @@ typedef void (*MyCallback)(int a,int b);
 // prototype declarations
 void _set_callback(MyCallback callback);
 
+void irq();
+
 #endif
