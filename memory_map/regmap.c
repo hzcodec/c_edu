@@ -88,10 +88,10 @@ void close_mem() {
 // 32 bit write access
 void write32(uint32_t reg, uint32_t data) {
 
-    printf("*** Data write access (32 bit): %08x\n",data);
+    printf("*** Data write access (32 bit): %08x\n", data);
 
-    printf("reg:  %08x\n",reg);
-    printf("data: %08x\n",data);
+    printf("reg:  %08x\n", reg);
+    printf("data: %08x\n", data);
 
     uint32_t lo = reg * 2;
     uint32_t hi = lo + 1;
@@ -112,8 +112,8 @@ uint32_t read32(int reg) {
     uint16_t lo_data = reg_map16[lo];
     uint16_t hi_data = reg_map16[hi];
 
-    printf("hi: %04x\n",lo_data);
-    printf("lo: %04x\n",hi_data);
+    printf("hi: %04x\n", lo_data);
+    printf("lo: %04x\n", hi_data);
 
     uint32_t data = (hi_data << 16) | lo_data;
     return data;
@@ -126,23 +126,23 @@ int main () {
    reset_mem();
 
    // write data at the beginning of the file, ascii A,B,C,D
-   write32(0,0x41424344);
+   write32(0, 0x41424344);
    uint32_t data32 = read32(0);
-   printf("@32 bit read - data: %08x\n",data32);
+   printf("@32 bit read - data: %08x\n", data32);
 
    // write data at the second place in the file, ascii H,I,J,K
-   write32(1,0x48494a4b);
+   write32(1, 0x48494a4b);
    data32 = read32(1);
-   printf("@32 bit read - data: %08x\n",data32);
+   printf("@32 bit read - data: %08x\n", data32);
 
-   write32(BLOCK_INST_BASE+CH_0,0x7778797a); // ascii w,x,y,z
+   write32(BLOCK_INST_BASE+CH_0, 0x7778797a); // ascii w,x,y,z
    data32 = read32(BLOCK_INST_BASE+CH_0);
-   printf("@32 bit read - data: %08x\n",data32);
+   printf("@32 bit read - data: %08x\n", data32);
 
    // write data to the last position, ascii h,j,k,l 
    write32(BLOCK_INST_BASE+CH_4,0x68696a6b);
    data32 = read32(BLOCK_INST_BASE+CH_4);
-   printf("@32 bit read - data: %08x\n",data32);
+   printf("@32 bit read - data: %08x\n", data32);
 
    close_mem();
 
